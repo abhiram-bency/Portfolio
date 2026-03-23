@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhiram Bency</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .row_container {
+            background-color: grey;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        html,
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Roboto", sans-serif;
+        }
+
+        .bg-light-teal {
+            background-color: #e6f7f7;
+        }
+    </style>
+
+    <style>
+        /* ── Navbar ── */
+        .site-header {
+            background: linear-gradient(135deg, #0a6e6e 0%, #0d9898 55%, #14b8b8 100%);
+            border-bottom: none;
+            padding: 0 !important;
+            box-shadow: 0 3px 18px rgba(10, 110, 110, 0.35);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .site-header .container {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        .nav-brand {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: #ffffff !important;
+            text-decoration: none;
+            letter-spacing: -0.3px;
+            padding: 14px 0;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .nav-brand span {
+            color: #a8f0e8;
+        }
+
+        .main-nav {
+            display: flex;
+            flex-wrap: nowrap;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2px;
+            align-items: stretch;
+        }
+
+        .main-nav li a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 18px 13px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            color: rgba(255, 255, 255, 0.82) !important;
+            text-decoration: none;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: color 0.18s, border-color 0.18s, background 0.18s;
+        }
+
+        .main-nav li a i {
+            font-size: 13px;
+            opacity: 0.75;
+        }
+
+        .main-nav li a:hover {
+            color: #ffffff !important;
+            border-bottom-color: #a8f0e8;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .main-nav li a.active {
+            color: #ffffff !important;
+            border-bottom-color: #1de9d0;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Search */
+        .nav-search .form-control {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1.5px solid rgba(255, 255, 255, 0.25);
+            color: white;
+            font-size: 0.82rem;
+            padding: 7px 13px;
+            border-radius: 20px;
+            width: 160px;
+            transition: background 0.2s, border-color 0.2s, width 0.3s;
+        }
+
+        .nav-search .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .nav-search .form-control:focus {
+            background: rgba(255, 255, 255, 0.22);
+            border-color: #a8f0e8;
+            box-shadow: none;
+            color: white;
+            width: 200px;
+            outline: none;
+        }
+
+        /* Profile dropdown */
+        .nav-avatar img {
+            border: 2px solid rgba(255, 255, 255, 0.55);
+            transition: border-color 0.18s;
+        }
+
+        .nav-avatar:hover img {
+            border-color: #a8f0e8;
+        }
+
+        .nav-avatar {
+            position: relative;
+        }
+
+        /* Icon buttons */
+        .nav-icon-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.75);
+            transition: background 0.18s, color 0.18s;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .nav-icon-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+        }
+
+        /* Dropdown */
+        .dropdown-menu {
+            border: 1px solid rgba(14, 184, 184, 0.2);
+            box-shadow: 0 6px 24px rgba(10, 110, 110, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            z-index: 1050;
+        }
+
+        .dropdown-item {
+            color: #0a3a3a;
+        }
+
+        .dropdown-item:hover {
+            background: #e0fafa;
+            color: #0a6e6e;
+        }
+
+        /* Mobile collapse */
+        @media (max-width: 991px) {
+            .main-nav-wrap {
+                display: none !important;
+            }
+
+            .nav-search {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .mobile-toggler {
+                display: none !important;
+            }
+        }
+
+        /* Mobile drawer */
+        .mobile-toggler {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: background 0.18s;
+        }
+
+        .mobile-toggler:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .mobile-toggler span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .mobile-toggler.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .mobile-toggler.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggler.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .mobile-drawer-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 40, 40, 0.4);
+            z-index: 1098;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-drawer-overlay.visible {
+            display: block;
+        }
+
+        .mobile-drawer-overlay.open {
+            opacity: 1;
+        }
+
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: min(80vw, 280px);
+            background: #fff;
+            z-index: 1099;
+            transform: translateX(-100%);
+            transition: transform 0.32s cubic-bezier(.22, .68, 0, 1.2);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 0 30px rgba(10, 110, 110, 0.15);
+        }
+
+        .mobile-drawer.open {
+            transform: translateX(0);
+        }
+
+        .mobile-drawer-header {
+            background: linear-gradient(135deg, #0a6e6e, #14b8b8);
+            padding: 20px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mobile-drawer-header .brand {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .drawer-x {
+            width: 30px;
+            height: 30px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 7px;
+            color: white;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .mobile-drawer ul {
+            list-style: none;
+            padding: 16px 12px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .mobile-drawer ul a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #0a3a3a;
+            transition: background 0.18s, color 0.18s;
+        }
+
+        .mobile-drawer ul a i {
+            width: 30px;
+            height: 30px;
+            background: #e0fafa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0d9898;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .mobile-drawer ul a:hover {
+            background: #e0fafa;
+            color: #0a6e6e;
+        }
+
+        /* ── Explore More buttons ── */
+        .explore-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: stretch;
+        }
+
+        .explore-buttons .w3-button {
+            flex: 1 1 130px;
+            text-align: center;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 600px) {
+            .explore-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .explore-buttons .w3-button {
+                width: 100%;
+                flex: none;
+            }
+        }
+    </style>
+
+    <style>
+        .tech-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 10px 0;
+        }
+
+        .tech-logo {
+            height: 100px;
+            width: auto;
+            padding: 8px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tech-logo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .tech-logo {
+            height: clamp(60px, 10vw, 100px);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ══════════════ NAVBAR ══════════════ -->
+    <header class="site-header">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between" style="gap:12px; min-height:56px;">
+
+                <!-- Brand -->
+                <a href="index.html" class="nav-brand">Abhiram <span>B</span></a>
+
+                <!-- Nav links (desktop) -->
+                <div class="main-nav-wrap d-none d-lg-flex flex-grow-1" style="overflow-x:auto;">
+                    <ul class="main-nav">
+                        <li><a href="index.html" class="active"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="resume.html"><i class="fa fa-file-text"></i> Resume</a></li>
+                        <li><a href="projects.html"><i class="fa fa-code"></i> Projects</a></li>
+                        <li><a href="Certifications.html"><i class="fa fa-certificate"></i> Certifications</a></li>
+                        <li><a href="Achievements.html"><i class="fa fa-trophy"></i> Achievements</a></li>
+                        <li><a href="sites2.html"><i class="fa fa-user"></i> Accounts</a></li>
+                        <li><a href="contact.html"><i class="fa fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Right side controls -->
+                <div class="d-flex align-items-center gap-2 flex-shrink-0">
+
+                    <!-- Search (desktop) -->
+                    <form class="nav-search d-none d-lg-block" role="search">
+                        <input type="search" class="form-control" placeholder="Search..." aria-label="Search"
+                            title="Search with a keyword e.g: projects">
+                    </form>
+
+                    <!-- Share icon -->
+                    <div class="nav-icon-btn" title="Share this website">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3" />
+                        </svg>
+                    </div>
+
+                    <!-- Download icon (functional) -->
+                    <a href="Resources/CV/resume.pdf" download="Abhiram_Bency_Resume.pdf"
+                        onclick="return confirm('Download Abhiram\'s Resume?');" class="nav-icon-btn"
+                        title="Download Abhiram's Resume">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.6A1.5 1.5 0 0 0 2.5 14.5h11A1.5 1.5 0 0 0 15 13v-2.6a.5.5 0 0 1 1 0V13a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 13v-2.6a.5.5 0 0 1 .5-.5" />
+                            <path
+                                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
+                        </svg>
+                    </a>
+
+                    <!-- Profile dropdown -->
+                    <div class="dropdown nav-avatar">
+                        <a href="#" class="d-block text-decoration-none dropdown-toggle" id="profileDropdown"
+                            data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                            <img src="Resources/images/Profile Pic.jpeg" alt="my image" width="32" height="32"
+                                class="rounded-circle">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="#"><i
+                                        class="fa fa-cog fa-fw w3-margin-right"></i>Settings</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="contact.html"><i
+                                        class="fa fa-envelope fa-fw w3-margin-right"></i>Contact me</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#" target="_blank"><i
+                                        class="fa fa-linkedin fa-fw w3-margin-right"></i>LinkedIn</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="Resources/CV/resume.pdf"
+                                    download="Abhiram_Bency_Resume.pdf"
+                                    onclick="return confirm('Download Abhiram\'s Resume?');">
+                                    <i class="fa fa-download fa-fw w3-margin-right"></i>Download Resume
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Hamburger (mobile) -->
+                    <button class="mobile-toggler" id="mobileMenuBtn" aria-label="Open navigation">
+                        <span></span><span></span><span></span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile drawer overlay -->
+    <div class="mobile-drawer-overlay" id="mobileOverlay"></div>
+
+    <!-- Mobile drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="mobile-drawer-header">
+            <span class="brand">Navigation</span>
+            <button class="drawer-x" id="mobileDrawerClose">&#10005;</button>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="resume.html"><i class="fa fa-file-text"></i> Resume</a></li>
+            <li><a href="projects.html"><i class="fa fa-code"></i> Projects</a></li>
+            <li><a href="Certifications.html"><i class="fa fa-certificate"></i> Certifications</a></li>
+            <li><a href="Achievements.html"><i class="fa fa-trophy"></i> Achievements</a></li>
+            <li><a href="sites2.html"><i class="fa fa-user"></i> Accounts</a></li>
+            <li><a href="contact.html"><i class="fa fa-envelope"></i> Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- ══════════════ BODY ══════════════ -->
+    <div class="homepage">
+        <div class="w3-light-grey">
+            <div class="w3-content w3-margin-top" style="max-width:1400px;">
+                <div class="w3-row-padding">
+
+                    <!-- Left Column -->
+                    <div class="w3-third">
+                        <div class="w3-white w3-text-grey w3-card-4">
+                            <div class="w3-display-container">
+                                <img src="Resources/Images/Profile Pic.jpeg" style="width:100%" alt="Avatar">
+                                <div class="w3-display-bottomleft w3-container w3-text-black">
+                                    <h2 style="padding-left: 92px;">Abhiram B</h2>
+                                </div>
+                            </div>
+                            <div class="w3-container" style="padding-top: 20px;">
+                                <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Full-stack
+                                    Developer</p>
+                                <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Kochi, Kerala,
+                                    India</p>
+                                <p><i
+                                        class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>abhirambency2004@gmail.com
+                                </p>
+                                <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>6239272757</p>
+                                <hr>
+
+                                <!-- Languages -->
+                                <p class="w3-large w3-text-theme"><b><i
+                                            class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
+                                <p>English</p>
+                                <div class="w3-light-grey w3-round-xlarge">
+                                    <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
+                                </div>
+                                <p>Malayalam</p>
+                                <div class="w3-light-grey w3-round-xlarge">
+                                    <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
+                                </div>
+                                <p>Hindi</p>
+                                <div class="w3-light-grey w3-round-xlarge">
+                                    <div class="w3-round-xlarge w3-teal" style="height:24px;width:75%"></div>
+                                </div>
+                                <br>
+
+                                <!-- Top Skills -->
+                                <p class="w3-large"><b><i
+                                            class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Top Skills</b>
+                                </p>
+                                <p>Full Stack Development</p>
+                                <div class="w3-light-grey w3-round-xlarge w3-small">
+                                    <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%
+                                    </div>
+                                </div>
+                                <p>DBMS</p>
+                                <div class="w3-light-grey w3-round-xlarge w3-small">
+                                    <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%
+                                    </div>
+                                </div>
+                                <p>AI / ML</p>
+                                <div class="w3-light-grey w3-round-xlarge w3-small">
+                                    <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%
+                                    </div>
+                                </div>
+                                <p>DevOps</p>
+                                <div class="w3-light-grey w3-round-xlarge w3-small">
+                                    <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:70%">70%
+                                    </div>
+                                </div>
+                                <p>Cloud Computing</p>
+                                <div class="w3-light-grey w3-round-xlarge w3-small">
+                                    <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:65%">65%
+                                    </div>
+                                </div>
+                                <br>
+
+                                <!-- Soft Skills -->
+                                <p class="w3-large"><b><i
+                                            class="fa fa-comments fa-fw w3-margin-right w3-text-teal"></i>Soft
+                                        Skills</b></p>
+                                <p>Communication</p>
+                                <div class="w3-light-grey w3-round-xlarge w3-small">
+                                    <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:95%">95%
+                                    </div>
+                                </div>
+                                <p>Public Speaking</p>
+                                <div class="w3-light-grey w3-round-xlarge w3-small">
+                                    <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%
+                                    </div>
+                                </div>
+                                <p>Teamwork</p>
+                                <div class="w3-light-grey w3-round-xlarge w3-small">
+                                    <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:85%">85%
+                                    </div>
+                                </div>
+                                <p>Problem Solving</p>
+                                <div class="w3-light-grey w3-round-xlarge w3-small">
+                                    <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:88%">88%
+                                    </div>
+                                </div>
+                                <p>Adaptability</p>
+                                <div class="w3-light-grey w3-round-xlarge w3-small">
+                                    <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div><br>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="w3-twothird">
+
+                        <!-- About Me -->
+                        <div class="w3-container w3-card w3-white w3-margin-bottom">
+                            <h2 class="w3-text-grey w3-padding-16"><i
+                                    class="fa fa-male fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>About me</h2>
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>Aspiring Software Developer</b></h5>
+                                <p>Aspiring Software Developer pursuing a Bachelor of Technology in Computer Science and
+                                    Engineering at Lovely Professional University, India, with a strong focus on AI/ML,
+                                    Python-based development, and backend systems.</p>
+                                <p>Hands-on experience in building and deploying machine learning and NLP solutions,
+                                    supported by a solid foundation in Python and practical exposure to real-world ML
+                                    workflows. Strong knowledge of Database Management Systems, including SQL and
+                                    PL/SQL.</p>
+                                <p>Proficient in both front-end and backend development, with experience in building
+                                    responsive user interfaces using HTML, CSS, JavaScript, and frameworks like
+                                    Bootstrap and W3.CSS, along with developing scalable backend components and APIs.
+                                    Working knowledge of Java and experience with developing and deploying <a
+                                        href="projects.html" target="_blank" rel="noopener noreferrer">projects</a> with
+                                    modern DevOps practices, including Git, Docker, and Kubernetes for efficient
+                                    development and deployment.</p>
+                                <p>Recognized as an effective communicator and accomplished public speaker, with the
+                                    ability to collaborate efficiently and present complex ideas with clarity.</p>
+                                <hr>
+                            </div>
+                        </div>
+
+                        <!-- Work Experience -->
+                        <div class="w3-container w3-card w3-white w3-margin-bottom">
+                            <h2 class="w3-text-grey w3-padding-16"><i
+                                    class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work
+                                Experience / Internship</h2>
+
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>Full-stack Developer Intern / Something.com</b></h5>
+                                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Dec 2025 -
+                                    <span class="w3-tag w3-teal w3-round">Current</span>
+                                </h6>
+                                <p>Developed and enhanced the user interface and overall user experience of the website
+                                    using React, PHP, and JavaScript.</p>
+                                <p>Improved layout consistency, visual design, and responsiveness across devices.
+                                    Optimized frontend components for cross-browser compatibility, addressing rendering
+                                    issues and improving accessibility across different screen sizes.</p>
+                                <hr>
+                            </div>
+
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>Front End Developer Intern / CISSA</b></h5>
+                                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Apr 2025 -
+                                    May 2025</h6>
+                                <p>Developed and enhanced the user interface and overall user experience of CISSA's
+                                    website using React, PHP, and JavaScript.</p>
+                                <p>Improved layout consistency, visual design, and responsiveness across devices.
+                                    Optimized frontend components for responsiveness and cross-browser compatibility,
+                                    addressing rendering issues and improving accessibility and usability across
+                                    different screen sizes and multiple devices.</p>
+                                <hr>
+                            </div>
+                        </div>
+
+                        <!-- Education -->
+                        <div class="w3-container w3-card w3-white">
+                            <h2 class="w3-text-grey w3-padding-16"><i
+                                    class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education
+                            </h2>
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>Lovely Professional University</b></h5>
+                                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2023 -
+                                    present</h6>
+                                <p>Bachelor's Degree in Computer Science Engineering</p>
+                                <hr>
+                            </div>
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>Saraswati Vidyaniketan Public School</b></h5>
+                                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2020 - 2022
+                                </h6>
+                                <p>Higher Secondary</p>
+                                <hr>
+                            </div>
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b>Jawahar Public School</b></h5>
+                                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2018 - 2020
+                                </h6>
+                                <p>Matriculation</p><br>
+                            </div>
+                        </div>
+
+                        <!-- Explore More -->
+                        <div class="w3-container w3-card w3-white w3-margin-bottom" style="margin-top:16px;">
+                            <h2 class="w3-text-grey w3-padding-16"><i
+                                    class="fa fa-th-large fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Explore
+                                More</h2>
+                            <div class="w3-container" style="padding-bottom:20px;">
+                                <p class="w3-text-grey" style="margin-bottom:14px;">Jump to a section:</p>
+                                <div class="explore-buttons">
+                                    <a href="projects.html" class="w3-button w3-teal w3-round" style="font-weight:600;">
+                                        <i class="fa fa-code w3-margin-right"></i>Projects
+                                    </a>
+                                    <a href="Certifications.html" class="w3-button w3-teal w3-round"
+                                        style="font-weight:600;">
+                                        <i class="fa fa-certificate w3-margin-right"></i>Certifications
+                                    </a>
+                                    <a href="Achievements.html" class="w3-button w3-teal w3-round"
+                                        style="font-weight:600;">
+                                        <i class="fa fa-trophy w3-margin-right"></i>Achievements
+                                    </a>
+                                    <a href="Resources/CV/resume.pdf" class="w3-button w3-round"
+                                        style="font-weight:600; background:#1a3a3a; color:#ffffff;"
+                                        download="Abhiram_Bency_Resume.pdf"
+                                        onclick="return confirm('Download Abhiram\'s Resume?');">
+                                        <i class="fa fa-download w3-margin-right"></i>Download Resume
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- end right column -->
+
+                    <!-- Bottom Grid -->
+                    <div class="w3-row-padding">
+                        <div class="w3-full">
+                            <div class="w3-container w3-card bg-light-teal w3-margin-bottom">
+                                <h2 class="w3-text-grey w3-padding-16"><i
+                                        class="fa fa-laptop fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Tech
+                                    Stack</h2>
+                                <div class="w3-container">
+                                    <div class="tech-logos">
+                                        <img src="Resources/Logos/Python.png" alt="Python" class="tech-logo">
+                                        <img src="Resources/Logos/C.jpg" alt="C" class="tech-logo">
+                                        <img src="Resources/Logos/Cpp.png" alt="C++" class="tech-logo">
+                                        <img src="Resources/Logos/Java.webp" alt="Java" class="tech-logo">
+                                        <img src="Resources/Logos/JavaScript.png" alt="JavaScript" class="tech-logo">
+                                        <img src="Resources/Logos/HTML5.png" alt="HTML" class="tech-logo">
+                                        <img src="Resources/Logos/CSS.png" alt="CSS" class="tech-logo">
+                                        <img src="Resources/Logos/SQL.png" alt="SQL" class="tech-logo">
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w3-full">
+                            <div class="w3-container w3-card bg-light-teal w3-margin-bottom">
+                                <h2 class="w3-text-grey w3-padding-16"><i
+                                        class="fa fa-cubes fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Frameworks
+                                    &amp; Libraries</h2>
+                                <div class="w3-container">
+                                    <div class="tech-logos">
+                                        <img src="Resources/Logos/django.png" alt="Django" class="tech-logo">
+                                        <img src="Resources/Logos/Flask.svg" alt="Flask" class="tech-logo">
+                                        <img src="Resources/Logos/Fast API.png" alt="FastAPI" class="tech-logo">
+                                        <img src="Resources/Logos/RESTAPI.png" alt="RestAPI" class="tech-logo">
+                                        <img src="Resources/Logos/Bootsrap.png" alt="Bootstrap" class="tech-logo">
+                                        <img src="Resources/Logos/numpy.png" alt="NumPy" class="tech-logo">
+                                        <img src="Resources/Logos/pandas.png" alt="Pandas" class="tech-logo">
+                                        <img src="Resources/Logos/scikitlearn.png" alt="Scikit-learn" class="tech-logo">
+                                        <img src="Resources/Logos/seaborn.png" alt="Seaborn" class="tech-logo">
+                                        <img src="Resources/Logos/matplotlib.webp" alt="Matplotlib" class="tech-logo">
+                                        <img src="Resources/Logos/Streamlit.png" alt="Streamlit" class="tech-logo">
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w3-full">
+                            <div class="w3-container w3-card bg-light-teal w3-margin-bottom">
+                                <h2 class="w3-text-grey w3-padding-16"><i
+                                        class="fa fa-wrench fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Tools
+                                    &amp; Technologies</h2>
+                                <div class="w3-container">
+                                    <div class="tech-logos">
+                                        <img src="Resources/Logos/Git.png" alt="Git" class="tech-logo">
+                                        <img src="Resources/Logos/Github.png" alt="GitHub" class="tech-logo">
+                                        <img src="Resources/Logos/docker.png" alt="Docker" class="tech-logo">
+                                        <img src="Resources/Logos/jenkins.jpg" alt="Jenkins" class="tech-logo">
+                                        <img src="Resources/Logos/Maven.png" alt="Maven" class="tech-logo">
+                                        <img src="Resources/Logos/Postgresql.png" alt="PostgreSQL" class="tech-logo">
+                                        <img src="Resources/Logos/Postman.png" alt="Postman" class="tech-logo">
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end bottom grid -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS — loaded BEFORE any dropdown usage -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script>
+        const mBtn = document.getElementById('mobileMenuBtn');
+        const mDrawer = document.getElementById('mobileDrawer');
+        const mOverlay = document.getElementById('mobileOverlay');
+
+        function openMobile() {
+            mOverlay.classList.add('visible');
+            requestAnimationFrame(() => { mOverlay.classList.add('open'); mDrawer.classList.add('open'); });
+            mBtn.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobile() {
+            mOverlay.classList.remove('open');
+            mDrawer.classList.remove('open');
+            mBtn.classList.remove('open');
+            document.body.style.overflow = '';
+            setTimeout(() => mOverlay.classList.remove('visible'), 320);
+        }
+
+        mBtn.addEventListener('click', () => mDrawer.classList.contains('open') ? closeMobile() : openMobile());
+        document.getElementById('mobileDrawerClose').addEventListener('click', closeMobile);
+        mOverlay.addEventListener('click', closeMobile);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobile(); });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements – Abhiram B</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        :root {
+            --teal-deep: #0a6e6e;
+            --teal-mid: #0d9898;
+            --teal-bright: #14b8b8;
+            --teal-glow: #1de9d0;
+            --teal-light: #e0fafa;
+            --teal-xlight: #f0fdfd;
+            --dark: #1a3a3a;
+            --text: #0a3a3a;
+            --text-muted: #4a8a8a;
+            --white: #ffffff;
+            --border: rgba(20, 184, 184, 0.2);
+            --nav-h: 62px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--teal-xlight);
+            color: var(--text);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* dot grid bg */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(14, 184, 184, 0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ═══════════════════════════
+           NAVBAR
+        ═══════════════════════════ */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 500;
+            height: var(--nav-h);
+            background: linear-gradient(135deg, var(--teal-deep) 0%, var(--teal-mid) 55%, var(--teal-bright) 100%);
+            box-shadow: 0 3px 18px rgba(10, 110, 110, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            gap: 12px;
+        }
+
+        .nav-brand {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: white;
+            text-decoration: none;
+            letter-spacing: -0.2px;
+            flex-shrink: 0;
+        }
+
+        .nav-brand span {
+            color: #a8f0e8;
+        }
+
+        .nav-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 6px;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 7px 13px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.83rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.82);
+            border: 1.5px solid rgba(255, 255, 255, 0.22);
+            transition: background 0.18s, color 0.18s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        @media (max-width: 500px) {
+            .nav-title {
+                display: none;
+            }
+
+            .nav-links a span {
+                display: none;
+            }
+
+            .nav-links a {
+                padding: 7px 10px;
+            }
+        }
+
+        /* ═══════════════════════════
+           PAGE HEADER
+        ═══════════════════════════ */
+        .page-header {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px 28px;
+        }
+
+        .page-header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 800;
+            color: var(--teal-deep);
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .page-header h1 span {
+            background: linear-gradient(135deg, var(--teal-mid), var(--teal-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            margin-top: 8px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .header-line {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--teal-mid), var(--teal-glow));
+            border-radius: 2px;
+            margin: 14px auto 0;
+        }
+
+        /* ═══════════════════════════
+           SLIDER
+        ═══════════════════════════ */
+        .slider-section {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 16px 32px;
+        }
+
+        .slider-wrap {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 48px rgba(10, 110, 110, 0.18);
+            background: var(--dark);
+            /* Fixed height works for both landscape and portrait photos */
+            height: 480px;
+        }
+
+        @media (max-width: 768px) {
+            .slider-wrap {
+                height: 380px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slider-wrap {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .slider-wrap {
+                height: 240px;
+            }
+        }
+
+        .slides-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.75s cubic-bezier(.22, .68, 0, 1.1);
+            will-change: transform;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        /* Blurred backdrop layer — fills the dark gaps for portrait images */
+        .slide-bg {
+            position: absolute;
+            inset: -10px;
+            background-size: cover;
+            background-position: center;
+            filter: blur(22px) brightness(0.4) saturate(1.3);
+            transform: scale(1.08);
+            z-index: 0;
+        }
+
+        /* Actual image — contained so nothing is ever cropped */
+        .slide img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            z-index: 1;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        /* Gradient overlay — sits above image, below caption */
+        .slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 60, 60, 0.82) 0%, rgba(10, 60, 60, 0.1) 50%, transparent 75%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Caption */
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            padding: 20px 24px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .caption-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .caption-tag {
+            display: inline-block;
+            background: var(--teal-bright);
+            color: white;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 6px;
+        }
+
+        .caption-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(0.95rem, 2.5vw, 1.3rem);
+            font-weight: 700;
+            color: white;
+            line-height: 1.25;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .caption-sub {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-top: 3px;
+        }
+
+        .caption-btn {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            color: var(--teal-deep);
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            border-radius: 9px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.15s, box-shadow 0.15s;
+            white-space: nowrap;
+        }
+
+        .caption-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .caption-btn.active {
+            background: var(--teal-bright);
+            color: white;
+        }
+
+        /* Prev / Next arrows */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 4;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(6px);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.18s, transform 0.15s;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(255, 255, 255, 0.28);
+            transform: translateY(-50%) scale(1.06);
+        }
+
+        .arrow-prev {
+            left: 14px;
+        }
+
+        .arrow-next {
+            right: 14px;
+        }
+
+        @media (max-width: 400px) {
+            .slider-arrow {
+                display: none;
+            }
+        }
+
+        /* Dots */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(13, 152, 152, 0.3);
+            border: 2px solid rgba(13, 152, 152, 0.2);
+            cursor: pointer;
+            transition: all 0.22s;
+        }
+
+        .dot.active {
+            background: var(--teal-mid);
+            border-color: var(--teal-mid);
+            transform: scale(1.3);
+        }
+
+        /* Autoplay progress bar */
+        .slider-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: var(--teal-glow);
+            border-radius: 0 2px 0 0;
+            z-index: 4;
+            width: 0%;
+            transition: width linear;
+            opacity: 0.8;
+        }
+
+        /* ═══════════════════════════
+           DETAIL CARDS
+        ═══════════════════════════ */
+        .details-section {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 16px 60px;
+        }
+
+        .details-section h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--teal-deep);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .details-section h2 i {
+            color: var(--teal-bright);
+        }
+
+        /* grid of detail cards */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .ach-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 8px rgba(10, 110, 110, 0.06);
+            transition: transform 0.22s, box-shadow 0.22s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ach-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(10, 110, 110, 0.13);
+        }
+
+        .ach-card.highlight {
+            border-color: var(--teal-bright);
+            box-shadow: 0 0 0 2px rgba(20, 184, 184, 0.25), 0 8px 28px rgba(10, 110, 110, 0.13);
+        }
+
+        .ach-card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.95);
+            transition: filter 0.2s;
+        }
+
+        .ach-card:hover .ach-card-img {
+            filter: brightness(1);
+        }
+
+        .ach-card-img-placeholder {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, var(--teal-light), #c5f0f0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--teal-mid);
+        }
+
+        .ach-card-body {
+            padding: 18px 20px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ach-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .ach-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 3px 9px;
+            border-radius: 20px;
+            background: var(--teal-light);
+            color: var(--teal-deep);
+        }
+
+        .ach-tag.gold {
+            background: #fff7e0;
+            color: #b45309;
+        }
+
+        .ach-tag.blue {
+            background: #e0f0ff;
+            color: #1d4ed8;
+        }
+
+        .ach-tag.green {
+            background: #e0faf0;
+            color: #065f46;
+        }
+
+        .ach-date {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        .ach-card-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .ach-card-desc {
+            font-size: 0.85rem;
+            color: #4a6a6a;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .ach-card-footer {
+            padding: 12px 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--teal-xlight);
+            flex-wrap: wrap;
+        }
+
+        .ach-card-footer i {
+            color: var(--teal-mid);
+            font-size: 13px;
+        }
+
+        .ach-card-footer span {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            flex: 1;
+        }
+
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #0a66c2;
+            color: white !important;
+            font-size: 0.73rem;
+            font-weight: 700;
+            padding: 5px 11px;
+            border-radius: 7px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background 0.18s, transform 0.15s;
+            flex-shrink: 0;
+        }
+
+        .linkedin-btn:hover {
+            background: #0856a8;
+            transform: translateY(-1px);
+        }
+
+        /* Active/highlighted card (when "Know more" clicked) */
+        .ach-card.highlighted {
+            animation: highlightPulse 0.5s ease;
+        }
+
+        @keyframes highlightPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(20, 184, 184, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 0 8px rgba(20, 184, 184, 0.15);
+            }
+
+            100% {
+                box-shadow: 0 0 0 2px rgba(20, 184, 184, 0.25), 0 8px 28px rgba(10, 110, 110, 0.13);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════ NAVBAR ═══════ -->
+    <nav class="site-nav">
+        <a href="index.html" class="nav-brand">Abhiram <span>B</span></a>
+        <span class="nav-title"><i class="fa fa-trophy" style="margin-right:7px;color:#a8f0e8;"></i>Achievements</span>
+        <div class="nav-links">
+            <a href="index.html"><i class="fa fa-home"></i> <span>Home</span></a>
+            <a href="contact.html"><i class="fa fa-envelope"></i> <span>Contact</span></a>
+        </div>
+    </nav>
+
+    <!-- ═══════ PAGE HEADER ═══════ -->
+    <div class="page-header">
+        <h1>My <span>Achievements</span></h1>
+        <p>A collection of milestones, recognitions, and proud moments.</p>
+        <div class="header-line"></div>
+    </div>
+
+    <!-- ═══════ SLIDER ═══════ -->
+    <section class="slider-section" aria-label="Achievements slideshow">
+        <div class="slider-wrap" id="sliderWrap">
+            <div class="slides-track" id="slidesTrack">
+
+                <!-- Slide 1 -->
+                <article class="slide" data-target="ach1">
+                    <div class="slide-bg" data-src="Resources/Images/exhibition.png"></div>
+                    <img src="Resources/Images/exhibition.png" alt="Achievement 1">
+                    <div class="slide-caption">
+                        <div class="caption-text">
+                            <span class="caption-tag">🏆 Award</span>
+                            <div class="caption-title">Best Project Award — LPU Tech Fest</div>
+                            <div class="caption-sub">Lovely Professional University · 2024</div>
+                        </div>
+                        <button class="caption-btn" data-target="ach1">
+                            <i class="fa fa-info-circle"></i> Know more
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Slide 2 -->
+                <article class="slide" data-target="ach2">
+                    <div class="slide-bg"
+                        data-src="https://via.placeholder.com/1600x600/0a6e6e/ffffff?text=Achievement+2"></div>
+                    <img src="https://via.placeholder.com/1600x600/0a6e6e/ffffff?text=Achievement+2"
+                        alt="Achievement 2">
+                    <div class="slide-caption">
+                        <div class="caption-text">
+                            <span class="caption-tag">💻 Hackathon</span>
+                            <div class="caption-title">Coding Hackathon — Top 10 Finalist</div>
+                            <div class="caption-sub">Inter-University · 2024</div>
+                        </div>
+                        <button class="caption-btn" data-target="ach2">
+                            <i class="fa fa-info-circle"></i> Know more
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Slide 3 -->
+                <article class="slide" data-target="ach3">
+                    <div class="slide-bg"
+                        data-src="https://via.placeholder.com/1600x600/14b8b8/ffffff?text=Achievement+3"></div>
+                    <img src="https://via.placeholder.com/1600x600/14b8b8/ffffff?text=Achievement+3"
+                        alt="Achievement 3">
+                    <div class="slide-caption">
+                        <div class="caption-text">
+                            <span class="caption-tag">🎤 Speaker</span>
+                            <div class="caption-title">Public Speaking Competition — 1st Place</div>
+                            <div class="caption-sub">University Level · 2023</div>
+                        </div>
+                        <button class="caption-btn" data-target="ach3">
+                            <i class="fa fa-info-circle"></i> Know more
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Arrows -->
+            <button class="slider-arrow arrow-prev" id="arrowPrev" aria-label="Previous">&#10094;</button>
+            <button class="slider-arrow arrow-next" id="arrowNext" aria-label="Next">&#10095;</button>
+
+            <!-- Progress bar -->
+            <div class="slider-progress" id="sliderProgress"></div>
+        </div>
+
+        <!-- Dots -->
+        <div class="slider-dots" id="sliderDots"></div>
+    </section>
+
+    <!-- ═══════ DETAIL CARDS ═══════ -->
+    <section class="details-section">
+        <h2><i class="fa fa-list-alt"></i> All Achievements</h2>
+
+        <div class="achievements-grid">
+
+            <!-- Card 1 -->
+            <div class="ach-card" id="ach1">
+                <img class="ach-card-img" src="Resources/Images/exhibition.png" alt="Best Project Award">
+                <div class="ach-card-body">
+                    <div class="ach-card-meta">
+                        <span class="ach-tag gold">🏆 Award</span>
+                        <span class="ach-date"><i class="fa fa-calendar" style="margin-right:4px;"></i>2024</span>
+                    </div>
+                    <div class="ach-card-title">Best Project Award — LPU Tech Fest</div>
+                    <p class="ach-card-desc">
+                        Received the Best Project Award at LPU's annual Tech Fest for developing an AI-powered
+                        NLP solution that automated document classification. The project was evaluated by
+                        industry professionals and was recognized for its real-world applicability and
+                        technical depth.
+                    </p>
+                </div>
+                <div class="ach-card-footer">
+                    <i class="fa fa-map-marker"></i>
+                    <span>Lovely Professional University, Phagwara</span>
+                    <a href="https://www.linkedin.com/in/abhiram-bency/" target="_blank" rel="noopener noreferrer"
+                        class="linkedin-btn">
+                        <i class="fa fa-linkedin"></i> View on LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="ach-card" id="ach2">
+                <img class="ach-card-img" src="https://via.placeholder.com/600x300/0a6e6e/ffffff?text=Hackathon+2024"
+                    alt="Hackathon Finalist">
+                <div class="ach-card-body">
+                    <div class="ach-card-meta">
+                        <span class="ach-tag blue">💻 Hackathon</span>
+                        <span class="ach-date"><i class="fa fa-calendar" style="margin-right:4px;"></i>2024</span>
+                    </div>
+                    <div class="ach-card-title">Coding Hackathon — Top 10 Finalist</div>
+                    <p class="ach-card-desc">
+                        Competed in a 24-hour inter-university hackathon and advanced to the top 10 out of
+                        over 150 teams. Built a full-stack web application under time pressure using React,
+                        FastAPI, and PostgreSQL. Demonstrated strong problem-solving and rapid prototyping skills.
+                    </p>
+                </div>
+                <div class="ach-card-footer">
+                    <i class="fa fa-map-marker"></i>
+                    <span>Inter-University Competition</span>
+                    <a href="https://www.linkedin.com/in/abhiram-bency/" target="_blank" rel="noopener noreferrer"
+                        class="linkedin-btn">
+                        <i class="fa fa-linkedin"></i> View on LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="ach-card" id="ach3">
+                <img class="ach-card-img"
+                    src="https://via.placeholder.com/600x300/14b8b8/ffffff?text=Public+Speaking+2023"
+                    alt="Public Speaking">
+                <div class="ach-card-body">
+                    <div class="ach-card-meta">
+                        <span class="ach-tag green">🎤 Speaker</span>
+                        <span class="ach-date"><i class="fa fa-calendar" style="margin-right:4px;"></i>2023</span>
+                    </div>
+                    <div class="ach-card-title">Public Speaking Competition — 1st Place</div>
+                    <p class="ach-card-desc">
+                        Won first place in a university-level public speaking competition, delivering a
+                        persuasive speech on the ethical implications of AI in modern society.
+                        Evaluated on clarity, structure, engagement, and delivery by a panel of faculty judges.
+                    </p>
+                </div>
+                <div class="ach-card-footer">
+                    <i class="fa fa-map-marker"></i>
+                    <span>Lovely Professional University</span>
+                    <a href="https://www.linkedin.com/in/abhiram-bency/" target="_blank" rel="noopener noreferrer"
+                        class="linkedin-btn">
+                        <i class="fa fa-linkedin"></i> View on LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- ─────────────────────────────────────────────
+                 ADD MORE ACHIEVEMENTS BELOW IN THIS FORMAT:
+
+            <div class="ach-card" id="ach4">
+                <div class="ach-card-img-placeholder">🏅</div>
+                <div class="ach-card-body">
+                    <div class="ach-card-meta">
+                        <span class="ach-tag">Category</span>
+                        <span class="ach-date">Year</span>
+                    </div>
+                    <div class="ach-card-title">Achievement Title</div>
+                    <p class="ach-card-desc">Description of what you achieved and why it matters.</p>
+                </div>
+                <div class="ach-card-footer">
+                    <i class="fa fa-map-marker"></i>
+                    <span>Location / Organisation</span>
+                </div>
+            </div>
+            ───────────────────────────────────────────── -->
+
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            const track = document.getElementById('slidesTrack');
+            const dotsWrap = document.getElementById('sliderDots');
+            const prevBtn = document.getElementById('arrowPrev');
+            const nextBtn = document.getElementById('arrowNext');
+            const progress = document.getElementById('sliderProgress');
+            const sliderWrap = document.getElementById('sliderWrap');
+
+            const slides = Array.from(track.querySelectorAll('.slide'));
+            const total = slides.length;
+            const AUTO = 5500; // ms per slide
+
+            let current = 0;
+            let timer = null;
+            let progTimer = null;
+            let paused = false;
+            let touchStartX = 0;
+
+            /* ── Build dots ── */
+            slides.forEach((_, i) => {
+                const d = document.createElement('div');
+                d.className = 'dot' + (i === 0 ? ' active' : '');
+                d.addEventListener('click', () => { goTo(i); resetTimer(); });
+                dotsWrap.appendChild(d);
+            });
+
+            function getDots() { return dotsWrap.querySelectorAll('.dot'); }
+
+            /* ── Render ── */
+            function render() {
+                track.style.transform = `translateX(-${current * 100}%)`;
+                getDots().forEach((d, i) => d.classList.toggle('active', i === current));
+            }
+
+            /* ── Navigation ── */
+            function goTo(n) { current = ((n % total) + total) % total; render(); }
+            function goPrev() { goTo(current - 1); }
+            function goNext() { goTo(current + 1); }
+
+            prevBtn.addEventListener('click', () => { goPrev(); resetTimer(); });
+            nextBtn.addEventListener('click', () => { goNext(); resetTimer(); });
+
+            /* ── Autoplay + progress bar ── */
+            function startProgress() {
+                if (progTimer) clearInterval(progTimer);
+                progress.style.transition = 'none';
+                progress.style.width = '0%';
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        progress.style.transition = `width ${AUTO}ms linear`;
+                        progress.style.width = '100%';
+                    });
+                });
+            }
+
+            function startTimer() {
+                clearInterval(timer);
+                startProgress();
+                timer = setInterval(() => { if (!paused) { goNext(); startProgress(); } }, AUTO);
+            }
+
+            function resetTimer() { clearInterval(timer); startTimer(); }
+
+            /* ── Pause on hover ── */
+            sliderWrap.addEventListener('mouseenter', () => { paused = true; progress.style.animationPlayState = 'paused'; });
+            sliderWrap.addEventListener('mouseleave', () => { paused = false; });
+
+            /* ── Touch / swipe ── */
+            sliderWrap.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; paused = true; }, { passive: true });
+            sliderWrap.addEventListener('touchend', e => {
+                const diff = e.changedTouches[0].clientX - touchStartX;
+                if (Math.abs(diff) > 40) { diff < 0 ? goNext() : goPrev(); resetTimer(); }
+                paused = false;
+            }, { passive: true });
+
+            /* ── Keyboard ── */
+            document.addEventListener('keydown', e => {
+                if (e.key === 'ArrowLeft') { goPrev(); resetTimer(); }
+                if (e.key === 'ArrowRight') { goNext(); resetTimer(); }
+            });
+
+            /* ── "Know more" → scroll to + highlight card ── */
+            document.querySelectorAll('.caption-btn[data-target]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.dataset.target;
+                    const card = document.getElementById(id);
+                    if (!card) return;
+
+                    // Highlight button temporarily
+                    document.querySelectorAll('.caption-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    setTimeout(() => btn.classList.remove('active'), 1200);
+
+                    // Pulse card and scroll
+                    card.classList.remove('highlighted', 'highlight');
+                    void card.offsetWidth; // reflow
+                    card.classList.add('highlighted', 'highlight');
+                    setTimeout(() => card.classList.remove('highlighted'), 600);
+
+                    const navH = 62;
+                    const top = card.getBoundingClientRect().top + window.scrollY - navH - 16;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                });
+            });
+
+            /* ── Init ── */
+            window.addEventListener('load', () => {
+                // Apply blurred backdrop images
+                document.querySelectorAll('.slide-bg[data-src]').forEach(el => {
+                    el.style.backgroundImage = `url('${el.dataset.src}')`;
+                });
+                render();
+                startTimer();
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

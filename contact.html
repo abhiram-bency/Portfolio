@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Me</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    :root {
+      --teal-deep: #0a6e6e;
+      --teal-mid: #0d9898;
+      --teal-bright: #14b8b8;
+      --teal-glow: #1de9d0;
+      --teal-light: #e0fafa;
+      --white: #ffffff;
+      --off-white: #f5fefe;
+      --text-dark: #0a3a3a;
+      --text-muted: #4a8a8a;
+      --border: rgba(20, 184, 184, 0.25);
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --nav-h: 64px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      min-height: 100vh;
+      padding-bottom: calc(var(--nav-h) + 32px);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── BG pattern ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 0%, rgba(20, 184, 184, 0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 90% 100%, rgba(13, 152, 152, 0.10) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Grid dots ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(14, 184, 184, 0.12) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Page wrapper ── */
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 48px 16px 0;
+    }
+
+    /* ── Card ── */
+    .contact-card {
+      width: 100%;
+      max-width: 640px;
+      background: var(--card-bg);
+      border-radius: 24px;
+      box-shadow: 0 4px 6px rgba(10, 110, 110, 0.06), 0 20px 60px rgba(10, 110, 110, 0.10);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    /* ── Card header ── */
+    .card-header {
+      background: linear-gradient(135deg, var(--teal-deep) 0%, var(--teal-mid) 60%, var(--teal-bright) 100%);
+      padding: 36px 36px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-header::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .card-header::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: -20px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .card-header h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-header p {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.9rem;
+      margin-top: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Info strip ── */
+    .info-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-item {
+      flex: 1 1 160px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 20px;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .info-item:last-child {
+      border-right: none;
+    }
+
+    .info-item:hover {
+      background: var(--teal-light);
+    }
+
+    .info-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--teal-mid), var(--teal-bright));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: white;
+      font-size: 13px;
+    }
+
+    .info-text {
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+
+    .info-text span {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    /* ── Form body ── */
+    .card-body {
+      padding: 28px 32px 32px;
+    }
+
+    .form-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--white);
+      color: var(--text-dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .form-control::placeholder {
+      color: #aac6c6;
+    }
+
+    .form-control:focus {
+      border-color: var(--teal-bright);
+      box-shadow: 0 0 0 3px rgba(20, 184, 184, 0.15);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    /* ── Button ── */
+    .btn-send {
+      width: 100%;
+      padding: 13px 20px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--teal-deep) 0%, var(--teal-bright) 100%);
+      color: white;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(13, 152, 152, 0.35);
+      margin-top: 6px;
+    }
+
+    .btn-send:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 22px rgba(13, 152, 152, 0.45);
+    }
+
+    .btn-send:active {
+      transform: translateY(0);
+    }
+
+    /* ════════════════════════════════
+       BOTTOM NAV
+    ════════════════════════════════ */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-h);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 1000;
+      box-shadow: 0 -2px 16px rgba(10, 110, 110, 0.08);
+    }
+
+    .nav-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--teal-deep);
+      letter-spacing: -0.3px;
+      text-decoration: none;
+    }
+
+    /* Desktop nav links (hidden on mobile) */
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.83rem;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 8px;
+      color: var(--text-muted);
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: var(--teal-light);
+      color: var(--teal-deep);
+    }
+
+    /* Hamburger (mobile only) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 8px;
+      background: none;
+      border: none;
+      transition: background 0.18s;
+    }
+
+    .hamburger:hover {
+      background: var(--teal-light);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--teal-deep);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ── Drawer (mobile) ── */
+    .drawer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 50, 50, 0.35);
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .drawer-overlay.visible {
+      display: block;
+    }
+
+    .drawer-overlay.open {
+      opacity: 1;
+    }
+
+    .drawer {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: min(78vw, 280px);
+      background: var(--white);
+      z-index: 1001;
+      transform: translateX(100%);
+      transition: transform 0.32s cubic-bezier(.22, .68, 0, 1.2);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -4px 0 30px rgba(10, 110, 110, 0.12);
+    }
+
+    .drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      padding: 22px 20px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .drawer-header .brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--teal-deep);
+    }
+
+    .drawer-close {
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: var(--teal-light);
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--teal-deep);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.18s;
+    }
+
+    .drawer-close:hover {
+      background: #c5efef;
+    }
+
+    .drawer-nav {
+      padding: 20px 14px;
+      list-style: none;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .drawer-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      transition: background 0.18s, color 0.18s, transform 0.15s;
+    }
+
+    .drawer-nav a:hover {
+      background: var(--teal-light);
+      color: var(--teal-deep);
+      transform: translateX(3px);
+    }
+
+    .drawer-nav .nav-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    /* icon bg colours per item */
+    .drawer-nav li:nth-child(1) .nav-icon {
+      background: #d6eeff;
+      color: #1a6fb3;
+    }
+
+    .drawer-nav li:nth-child(2) .nav-icon {
+      background: #ffe0e0;
+      color: #c0392b;
+    }
+
+    .drawer-nav li:nth-child(3) .nav-icon {
+      background: #e0fafa;
+      color: var(--teal-deep);
+    }
+
+    .drawer-nav li:nth-child(4) .nav-icon {
+      background: #fff3d6;
+      color: #b8860b;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .card-body {
+        padding: 22px 20px 26px;
+      }
+
+      .card-header {
+        padding: 28px 22px 22px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .info-item {
+        flex: 1 1 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .info-item:last-child {
+        border-bottom: none;
+      }
+    }
+
+    @media (min-width: 641px) {
+      .drawer {
+        display: none !important;
+      }
+
+      .drawer-overlay {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ───────────────── PAGE ───────────────── -->
+  <div class="page-wrapper">
+    <div class="contact-card">
+
+      <!-- Header -->
+      <div class="card-header">
+        <h2>Get in Touch</h2>
+        <p>I'd love to hear from you — let's build something together.</p>
+      </div>
+
+      <!-- Info strip -->
+      <div class="info-strip">
+        <div class="info-item">
+          <div class="info-icon"><i class="fa fa-map-marker"></i></div>
+          <div class="info-text">
+            <span>Location</span>
+            Kochi, Kerala, INDIA
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><i class="fa fa-phone"></i></div>
+          <div class="info-text">
+            <span>Phone</span>
+            +91 6239272757
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><i class="fa fa-envelope"></i></div>
+          <div class="info-text">
+            <span>Email</span>
+            abhirambency2004@mail.com
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="card-body">
+        <form action="#" method="post">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Name</label>
+              <input class="form-control" type="text" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input class="form-control" type="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <input class="form-control" type="text" placeholder="What's this about?" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-control" placeholder="Write your message here…" rows="5" required></textarea>
+          </div>
+
+          <button class="btn-send" type="submit">
+            <i class="fa fa-paper-plane"></i> Send Message
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ───────────────── BOTTOM NAV ───────────────── -->
+  <nav class="bottom-nav">
+    <a class="nav-brand" href="#">Abhiram</a>
+
+    <!-- Desktop links -->
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="sites2.html"><i class="fa fa-user"></i> Accounts</a></li>
+      <li><a href="projects.html"><i class="fa fa-code"></i> Projects</a></li>
+      <li><a href="certifications.html"><i class="fa fa-certificate"></i> Certifications</a></li>
+      <li><a href="contact.html" class="active"><i class="fa fa-envelope"></i> Contact</a></li>
+    </ul>
+
+    <!-- Hamburger (mobile) -->
+    <button class="hamburger" id="menuBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Overlay -->
+  <div class="drawer-overlay" id="overlay"></div>
+
+  <!-- Drawer -->
+  <div class="drawer" id="drawer">
+    <div class="drawer-header">
+      <span class="brand">Pages</span>
+      <button class="drawer-close" id="closeBtn">&#10005;</button>
+    </div>
+    <ul class="drawer-nav">
+      <li>
+        <a href="index.html">
+          <div class="nav-icon"><i class="fa fa-home"></i></div>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="sites2.html">
+          <div class="nav-icon"><i class="fa fa-user"></i></div>
+          Accounts
+        </a>
+      </li>
+      <li>
+        <a href="projects.html">
+          <div class="nav-icon"><i class="fa fa-code"></i></div>
+          Projects
+        </a>
+      </li>
+      <li>
+        <a href="certifications.html">
+          <div class="nav-icon"><i class="fa fa-certificate"></i></div>
+          Certifications
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const drawer = document.getElementById('drawer');
+    const overlay = document.getElementById('overlay');
+
+    function openDrawer() {
+      overlay.classList.add('visible');
+      requestAnimationFrame(() => {
+        overlay.classList.add('open');
+        drawer.classList.add('open');
+      });
+      btn.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      overlay.classList.remove('open');
+      drawer.classList.remove('open');
+      btn.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => overlay.classList.remove('visible'), 320);
+    }
+
+    btn.addEventListener('click', () => drawer.classList.contains('open') ? closeDrawer() : openDrawer());
+    document.getElementById('closeBtn').addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abhiram Bency's Certifications</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <meta name="theme-color" content="#7952b3">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    .teal-bg {
+      background-color: #008080 !important;
+    }
+
+    .bg-light-teal {
+      background-color: #e6f7f7;
+    }
+
+    #certModalImg {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    #certModal .modal-dialog {
+      max-width: 860px;
+    }
+
+    .card-img-top {
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .card-img-top:hover {
+      opacity: 0.85;
+    }
+
+    .detail-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 20px;
+      margin: 2px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white">About</h4>
+            <p class="text-muted">A showcase of certifications earned through dedicated learning across web
+              development,
+              networking, cloud computing, and AI tools.</p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white">Follow on Twitter</a></li>
+              <li><a href="#" class="text-white">Like on Facebook</a></li>
+              <li><a href="#" class="text-white">Email me</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-dark teal-bg shadow-sm">
+      <div class="container">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
+            viewBox="0 0 24 24">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+            <circle cx="12" cy="13" r="4" />
+          </svg>
+          <strong>Abhiram Bency's Certifications</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+          aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="py-3 text-center container">
+      <div class="row py-lg-3">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Verified Expertise</h1>
+          <p class="lead text-muted">A collection of my official credentials, reflecting my expertise and
+            commitment to
+            continuous learning.</p>
+          <p>
+            <a href="#" class="btn btn-primary my-2">Technical</a>
+            <a href="#" class="btn btn-secondary my-2">Non-Technical</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="album py-5 bg-light-teal">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+          <!-- certificate 1 -->
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="Resources/certificates/The-Complete-2024-Web-Development-Bootcamp.svg"
+                class="bd-placeholder-img card-img-top" width="100%" height="225"
+                alt="The Complete 2024 Web Development Bootcamp Certificate" onclick="viewCertificate(this.src)">
+              <div class="card-body">
+                <p class="card-text">The Complete 2024 Web Development Bootcamp.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      data-cert="Resources/certificates/The-Complete-2024-Web-Development-Bootcamp.svg"
+                      onclick="viewCertificate(this.dataset.cert)">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="viewDetails('cert1')">Details</button>
+                  </div>
+                  <small class="text-muted">25+ hours</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- certificate 2 -->
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="Resources/certificates/CSE-Pathshala-Python-live-MOOC-certificate.svg"
+                class="bd-placeholder-img card-img-top" width="100%" height="225" alt="CSE Pathshala Python Certificate"
+                onclick="viewCertificate(this.src)">
+              <div class="card-body">
+                <p class="card-text">CSE Pathshala Python Live MOOC.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      data-cert="Resources/certificates/CSE-Pathshala-Python-live-MOOC-certificate.svg"
+                      onclick="viewCertificate(this.dataset.cert)">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="viewDetails('cert2')">Details</button>
+                  </div>
+                  <small class="text-muted">9 hours</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- certificate 3 -->
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="Resources/certificates/Cloud Computing.svg" class="bd-placeholder-img card-img-top" width="100%"
+                height="225" alt="Cloud Computing Certificate" onclick="viewCertificate(this.src)">
+              <div class="card-body">
+                <p class="card-text">Cloud Computing fundamentals and concepts.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      data-cert="Resources/certificates/Cloud Computing.svg"
+                      onclick="viewCertificate(this.dataset.cert)">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="viewDetails('cert3')">Details</button>
+                  </div>
+                  <small class="text-muted">40+ hrs</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- certificate 4 -->
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="Resources/certificates/Fundamentals of Network Communication Coursera LISP0YPC1EEV.svg"
+                class="bd-placeholder-img card-img-top" width="100%" height="225"
+                alt="Fundamentals of Network Communication Certificate" onclick="viewCertificate(this.src)">
+              <div class="card-body">
+                <p class="card-text">Fundamentals of Network Communication — Coursera.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      data-cert="Resources/certificates/Fundamentals of Network Communication Coursera LISP0YPC1EEV.svg"
+                      onclick="viewCertificate(this.dataset.cert)">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="viewDetails('cert4')">Details</button>
+                  </div>
+                  <small class="text-muted">21 hours</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- certificate 5 -->
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="Resources/certificates/The Bits and Bytes of Computer Networking Coursera G7Q09YT6YDUJ.svg"
+                class="bd-placeholder-img card-img-top" width="100%" height="225"
+                alt="The Bits and Bytes of Computer Networking Certificate" onclick="viewCertificate(this.src)">
+              <div class="card-body">
+                <p class="card-text">The Bits and Bytes of Computer Networking — Coursera.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      data-cert="Resources/certificates/The Bits and Bytes of Computer Networking Coursera G7Q09YT6YDUJ.svg"
+                      onclick="viewCertificate(this.dataset.cert)">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="viewDetails('cert5')">Details</button>
+                  </div>
+                  <small class="text-muted">21 hours</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- certificate 6 -->
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="Resources/certificates/Introduction to Hardware and Operating Systems Coursera KPINL8CIP32H.svg"
+                class="bd-placeholder-img card-img-top" width="100%" height="225"
+                alt="Introduction to Hardware and Operating Systems Certificate" onclick="viewCertificate(this.src)">
+              <div class="card-body">
+                <p class="card-text">Introduction to Hardware and Operating Systems — Coursera.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      data-cert="Resources/certificates/Introduction to Hardware and Operating Systems Coursera KPINL8CIP32H.svg"
+                      onclick="viewCertificate(this.dataset.cert)">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="viewDetails('cert6')">Details</button>
+                  </div>
+                  <small class="text-muted">13 hours</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- certificate 7 -->
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="Resources/certificates/ChatGPT made easy.svg" class="bd-placeholder-img card-img-top"
+                width="100%" height="225" alt="ChatGPT Made Easy Certificate" onclick="viewCertificate(this.src)">
+              <div class="card-body">
+                <p class="card-text">ChatGPT Made Easy — practical AI usage course.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      data-cert="Resources/certificates/ChatGPT made easy.svg"
+                      onclick="viewCertificate(this.dataset.cert)">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="viewDetails('cert7')">Details</button>
+                  </div>
+                  <small class="text-muted">3 hours</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- certificate 8 -->
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="Resources/certificates/TCPIP and Advanced Topics Coursera W7OUN9QH5VH7.svg"
+                class="bd-placeholder-img card-img-top" width="100%" height="225"
+                alt="TCP/IP and Advanced Topics Certificate" onclick="viewCertificate(this.src)">
+              <div class="card-body">
+                <p class="card-text">TCP/IP and Advanced Topics — Coursera.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      data-cert="Resources/certificates/TCPIP and Advanced Topics Coursera W7OUN9QH5VH7.svg"
+                      onclick="viewCertificate(this.dataset.cert)">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="viewDetails('cert8')">Details</button>
+                  </div>
+                  <small class="text-muted">12 hours</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- certificate 9 (placeholder) -->
+          <div class="col">
+            <div class="card shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+                role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c" />
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+              </svg>
+              <div class="card-body">
+                <p class="card-text">Certificate coming soon.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" disabled>View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      onclick="viewDetails('cert9')">Details</button>
+                  </div>
+                  <small class="text-muted">9 mins</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Certificate Viewer Modal ===== -->
+    <div class="modal fade" id="certModal" tabindex="-1" aria-labelledby="certModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="certModalLabel">Certificate</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-2">
+            <img id="certModalImg" src="" alt="Certificate" style="width:100%; height:auto; border-radius:4px;">
+          </div>
+          <div class="modal-footer">
+            <a id="certModalDownload" href="#" target="_blank" class="btn btn-outline-secondary btn-sm">Open
+              in new tab</a>
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Certificate Details Modal ===== -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header teal-bg text-white">
+            <h5 class="modal-title" id="detailsModalLabel">Certificate Details</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h6 id="detailTitle" class="fw-bold mb-1"></h6>
+            <p id="detailIssuer" class="text-muted small mb-3"></p>
+            <p id="detailDescription"></p>
+            <hr>
+            <div class="row text-center">
+              <div class="col">
+                <div class="fw-semibold" id="detailDuration">—</div>
+                <small class="text-muted">Duration</small>
+              </div>
+              <div class="col">
+                <div class="fw-semibold" id="detailDate">—</div>
+                <small class="text-muted">Completed</small>
+              </div>
+              <div class="col">
+                <div class="fw-semibold" id="detailCategory">—</div>
+                <small class="text-muted">Category</small>
+              </div>
+            </div>
+            <hr>
+            <div id="detailSkills"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="text-muted py-5">
+    <div class="container">
+      <p class="float-end mb-1"><a href="#">Back to top</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <script>
+    // ── Certificate details data ──────────────────────────────────────────────
+    const certDetails = {
+      cert1: {
+        title: "The Complete 2024 Web Development Bootcamp",
+        issuer: "Udemy · Issued by Dr. Angela Yu",
+        description: "A comprehensive bootcamp covering front-end and back-end web development. Topics include HTML5, CSS3, JavaScript, Node.js, React, MongoDB, and RESTful APIs through hands-on projects.",
+        duration: "25+ hrs",
+        date: "2024",
+        category: "Technical",
+        skills: ["HTML5", "CSS3", "JavaScript", "Node.js", "React", "MongoDB"]
+      },
+      cert2: {
+        title: "Python Live MOOC",
+        issuer: "CSE Pathshala",
+        description: "An intensive live MOOC covering Python programming fundamentals including data structures, OOP, file handling, and introductory scripting for automation.",
+        duration: "9 hrs",
+        date: "2024",
+        category: "Technical",
+        skills: ["Python", "OOP", "Data Structures", "Scripting"]
+      },
+      cert3: {
+        title: "Cloud Computing",
+        issuer: "NPTEL / Course Provider",
+        description: "A deep-dive course covering cloud infrastructure models (IaaS, PaaS, SaaS), virtualisation, deployment strategies, and major cloud platforms including AWS and Azure.",
+        duration: "40+ hrs",
+        date: "2024",
+        category: "Technical",
+        skills: ["AWS", "Azure", "Virtualisation", "IaaS", "PaaS", "SaaS"]
+      },
+      cert4: {
+        title: "Fundamentals of Network Communication",
+        issuer: "Coursera · University of Colorado",
+        description: "Covers the foundational principles of how data is transmitted across networks — from physical signals to routing protocols. Includes OSI/TCP-IP models, error detection, and flow control.",
+        duration: "~10 hrs",
+        date: "2024",
+        category: "Technical",
+        skills: ["OSI Model", "TCP/IP", "Routing", "Error Detection", "Flow Control"]
+      },
+      cert5: {
+        title: "The Bits and Bytes of Computer Networking",
+        issuer: "Coursera · Google",
+        description: "Part of the Google IT Support Professional Certificate. Covers networking protocols, IP addressing, subnetting, DNS, DHCP, NAT, VPNs, and network troubleshooting.",
+        duration: "~21 hrs",
+        date: "2024",
+        category: "Technical",
+        skills: ["IP Addressing", "Subnetting", "DNS", "DHCP", "VPN", "Troubleshooting"]
+      },
+      cert6: {
+        title: "Introduction to Hardware and Operating Systems",
+        issuer: "Coursera · IBM",
+        description: "An IBM-led course introducing computer hardware components, OS fundamentals, file systems, and virtualization — providing a solid base for IT support roles.",
+        duration: "~13 hrs",
+        date: "2024",
+        category: "Technical",
+        skills: ["Hardware Components", "Operating Systems", "File Systems", "Virtualisation"]
+      },
+      cert7: {
+        title: "ChatGPT Made Easy",
+        issuer: "Udemy",
+        description: "A practical guide to using ChatGPT effectively — covering prompt engineering, real-world use cases across writing, coding, and research, and tips for integrating AI into daily workflows.",
+        duration: "3 hrs",
+        date: "2024",
+        category: "Non-Technical",
+        skills: ["Prompt Engineering", "AI Tools", "ChatGPT", "Productivity"]
+      },
+      cert8: {
+        title: "TCP/IP and Advanced Topics",
+        issuer: "Coursera · University of Colorado",
+        description: "Advanced networking course focusing on TCP/IP protocol suite, socket programming, network security concepts, and performance optimisation techniques.",
+        duration: "~12 hrs",
+        date: "2024",
+        category: "Technical",
+        skills: ["TCP/IP", "Socket Programming", "Network Security", "Performance Optimisation"]
+      },
+      cert9: {
+        title: "Certificate — Coming Soon",
+        issuer: "TBD",
+        description: "Details for this certificate will be added shortly. Check back soon!",
+        duration: "—",
+        date: "—",
+        category: "—",
+        skills: []
+      }
+    };
+
+    // ── View certificate image ────────────────────────────────────────────────
+    function viewCertificate(src) {
+      document.getElementById('certModalImg').src = src;
+      document.getElementById('certModalDownload').href = src;
+      new bootstrap.Modal(document.getElementById('certModal')).show();
+    }
+
+    // ── View certificate details ──────────────────────────────────────────────
+    function viewDetails(id) {
+      const d = certDetails[id];
+      if (!d) return;
+
+      document.getElementById('detailsModalLabel').textContent = 'Certificate Details';
+      document.getElementById('detailTitle').textContent = d.title;
+      document.getElementById('detailIssuer').textContent = d.issuer;
+      document.getElementById('detailDescription').textContent = d.description;
+      document.getElementById('detailDuration').textContent = d.duration;
+      document.getElementById('detailDate').textContent = d.date;
+      document.getElementById('detailCategory').textContent = d.category;
+
+      const skillsEl = document.getElementById('detailSkills');
+      if (d.skills.length > 0) {
+        skillsEl.innerHTML = '<p class="small fw-semibold mb-1">Skills covered:</p>' +
+          d.skills.map(s =>
+            `<span class="badge rounded-pill bg-secondary me-1 mb-1">${s}</span>`
+          ).join('');
+      } else {
+        skillsEl.innerHTML = '';
+      }
+
+      new bootstrap.Modal(document.getElementById('detailsModal')).show();
+    }
+  </script>
+
+</body>
+
+</html>
